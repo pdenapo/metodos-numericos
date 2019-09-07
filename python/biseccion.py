@@ -13,13 +13,13 @@
 # (Es más fácil de entender)
 
 
-def biseccion(f, a, b, cuenta=1, tol=1e-11):
+def biseccion(f, a, b, n=1, tol=1e-11):
     
-    # La variable cuenta cuenta las iteraciones
+    # La variable n cuenta las iteraciones
     # tol especifica la tolerancia permitida 
     # al método numérico
     
-    print(cuenta, ") Bisección en el intervalo", 
+    print("n= ",n,": Bisección en el intervalo", 
                   "[", a,",", b, "]")
     if abs(b - a) < tol:
         return a
@@ -35,10 +35,10 @@ def biseccion(f, a, b, cuenta=1, tol=1e-11):
             return c
         if f(c) > 0:
             # sabemos que f(b)<0 y f(c)>0
-            return biseccion(f, c, b, cuenta + 1, tol)
+            return biseccion(f, c, b, n + 1, tol)
         else:
             # sabemos que f(a)>0 y  f(c)<0
-            return biseccion(f, a, c, cuenta + 1, tol)
+            return biseccion(f, a, c, n + 1, tol)
     else:
         # caso en que f(a)<0
         if f(b) < 0:
@@ -48,10 +48,10 @@ def biseccion(f, a, b, cuenta=1, tol=1e-11):
             return c
         if f(c) > 0:
             # sabemos que f(a)<0 y f(c)>0
-            return biseccion(f, a, c, cuenta + 1, tol)
+            return biseccion(f, a, c, n + 1, tol)
         else:
             # sabemos que f(b)>0 y f(c) <0
-            return biseccion(f, c, b, cuenta + 1, tol)
+            return biseccion(f, c, b, n + 1, tol)
 
 
 if __name__ == "__main__":
