@@ -49,9 +49,6 @@ def biseccion(f, a, b, cuenta=1, tol=1e-11):
         if f(c) > 0:
             # sabemos que f(a)<0 y f(c)>0
             return biseccion(f, a, c, cuenta + 1, tol)
-            # Notamos que también sabemos que f(b)<0
-            # podríamos haber usado biseccion(f,c,b) 
-            # No hay unicidad!
         else:
             # sabemos que f(b)>0 y f(c) <0
             return biseccion(f, c, b, cuenta + 1, tol)
