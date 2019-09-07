@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Programita para implementar el método de bisección
 
 # Busca un cero de f en el intervalo [a,b]
@@ -10,8 +11,6 @@
 
 # Usamos una llamada recursiva por motivos didácticos.
 # (Es más fácil de entender)
-
-from math import sqrt, exp, log, sin, cos, pi
 
 
 def biseccion(f, a, b, cuenta=1, tol=1e-11):
@@ -54,8 +53,11 @@ def biseccion(f, a, b, cuenta=1, tol=1e-11):
 
 if __name__ == "__main__":
 
+    from math import sqrt, exp, log, sin, cos, pi
+
     # Ejemplo 1: calculemos la raíz cuadrada de 2 encontrando una raíz de
     # un polinomio
+
 
     def mi_funcion(x):
         return x * x - 2
