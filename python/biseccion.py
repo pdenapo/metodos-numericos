@@ -19,7 +19,7 @@ def biseccion(f, a, b, n=1, tol=1e-11):
     # tol especifica la tolerancia permitida 
     # al método numérico
     
-    print("n= ",n,": Bisección en el intervalo", 
+    print("n= ",n,":Bisección en el intervalo", 
                   "[", a,",", b, "]")
     if abs(b - a) < tol:
         return a
@@ -27,25 +27,25 @@ def biseccion(f, a, b, n=1, tol=1e-11):
         return a
     if f(b) == 0:
         return b
+    # Encontramos el punto medio del intervalo [a,b]
+    c = (a + b) / 2
+    if f(c) == 0:
+            return c
     if f(a) > 0:
         if f(b) > 0:
-            raise Exception ("Error: hipótesis!")
-        c = (a + b) / 2
-        if f(c) == 0:
-            return c
+            raise Exception ("Error: hipótesis!")     
+        # Si llegamos acá, f(b)<0     
         if f(c) > 0:
             # sabemos que f(b)<0 y f(c)>0
             return biseccion(f, c, b, n + 1, tol)
         else:
-            # sabemos que f(a)>0 y  f(c)<0
+            # sabemos que f(a)>0 y f(c)<0
             return biseccion(f, a, c, n + 1, tol)
     else:
         # caso en que f(a)<0
         if f(b) < 0:
             raise Exception ("Error: hipótesis!")
-        c = (a + b) / 2
-        if f(c) == 0:
-            return c
+        # si llegamos acá f(b)>0
         if f(c) > 0:
             # sabemos que f(a)<0 y f(c)>0
             return biseccion(f, a, c, n + 1, tol)
@@ -87,6 +87,6 @@ if __name__ == "__main__":
     def mi_funcion3(x):
         return sin(x) - cos(x)
 
-    raiz_hallada = biseccion(mi_funcion3, 0, pi / 2, tol=1e-12)
+    raiz_hallada = biseccion(mi_funcion3, 0, 3, tol=1e-12)
     print("raiz_hallada=", raiz_hallada)
     print("valor exacto=", pi / 4)
