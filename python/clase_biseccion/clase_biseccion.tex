@@ -1,0 +1,158 @@
+% Procesar con Lua-Latex evita los problemas con Unicode
+\documentclass[11pt]{beamer}
+
+\mode<presentation>
+{ \usetheme{Madrid} }
+
+\usepackage[spanish]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{default}
+\newtheorem{teorema}{Teorema}
+\newtheorem{observacion}{Observación}
+\newtheorem{definicion}{Definición}
+\newtheorem{lema}{Lema}
+\usepackage{verbatim}
+
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+
+\def \a{\alpha}
+\def \b{\beta}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+
+\usepackage[utf8x]{inputenc}
+%\usepackage{default}
+\usepackage {graphics}
+\usepackage[procnames]{listings}
+\usepackage{pifont} 
+
+\definecolor{orange}{rgb}{1,0.5,0} 
+\definecolor{gelb}{rgb}{1,1,0}
+\definecolor{blaugrau}{rgb}{0,0.5,0.5}
+\definecolor{dgreen}{rgb}{0,.8,0.2}
+\definecolor{hellblau}{rgb}{0,0.8,1}
+\definecolor{hellblau2}{rgb}{0,0.5,1}
+\definecolor{violet}{rgb}{0.7,0,0.5}
+\definecolor{lila}{rgb}{1,0,1}
+\definecolor{grau}{rgb}{0.3,0.3,0.3}
+\definecolor{dlila}{rgb}{0.8,0.0,0.4} 
+\definecolor{braun}{rgb}{0.9,0.6,0} 
+\definecolor{braunlila}{rgb}{0.6,0.3,0.2} 
+
+\def\azul{\color{blue}}
+\def\rojo{\color{red}}
+\def\negro{\color{black}}
+\def\verde{\color{green}}
+
+\newcommand{\mcd}{\hbox{mcd}}
+
+\begin{document}
+
+
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+ 
+\lstset{language=Python, 
+        basicstyle=\ttfamily\small, 
+        keywordstyle=\color{keywords},
+        commentstyle=\color{comments},
+        stringstyle=\color{red},
+        showstringspaces=false,
+        identifierstyle=\color{green},
+        procnamekeys={def,class}}
+ 
+
+\title{El Método de Bisección (método numérico para el teorema de Bolzano) }
+\author{Pablo L. De Nápoli}
+\date{7 de septiembre de 2019}
+
+
+\institute{Departamento de Matem\'atica \\
+  Facultad de Ciencias Exactas y Naturales \\
+  Universidad de Buenos Aires }
+
+%{pdenapo@dm.uba.ar}
+\maketitle
+
+\part{El Programa para el método de Bisección}
+
+\frame{\partpage}
+\begin{frame}
+\frametitle{Programita recursivo (en Python 3) para el Método de
+Bisección}
+
+
+\frametitle{}
+
+\lstinputlisting[firstline=16,lastline=29]{../biseccion.py}
+
+\end{frame}
+
+
+\begin{frame} 
+
+\frametitle{Programita recursivo (en Python 3) para el Método de
+Bisección}
+
+
+\frametitle{Acá viene el algoritmo de bisección en sí...}
+
+\lstinputlisting[firstline=30,lastline=41]{../biseccion.py}
+
+\end{frame}
+\begin{frame}
+
+
+\frametitle{El otro caso es similar}
+
+\lstinputlisting[firstline=42,lastline=57]{../biseccion.py}
+
+\end{frame}
+
+\part{Un ejemplo}
+
+\frame{\partpage}
+
+
+\begin{frame}
+
+\frametitle{Un ejemplo de cómo usarlo}
+
+\lstinputlisting[firstline=64,lastline=74]{../biseccion.py}
+
+\end{frame}
+
+% The fragile option is needed with verbatim
+% https://tex.stackexchange.com/questions/256666/paragraph-ended-before-verbatim-was-complete-when-trying-to-use-verbatim-in
+\begin{frame}[fragile]
+\frametitle{Resultado}
+
+\begin{verbatim}
+1 ) Bisección en el intervalo [ 0 , 2 ]
+2 ) Bisección en el intervalo [ 1.0 , 2 ]
+3 ) Bisección en el intervalo [ 1.0 , 1.5 ]
+4 ) Bisección en el intervalo [ 1.25 , 1.5 ]
+5 ) Bisección en el intervalo [ 1.375 , 1.5 ]
+6 ) Bisección en el intervalo [ 1.375 , 1.4375 ]
+7 ) Bisección en el intervalo [ 1.40625 , 1.4375 ]
+8 ) Bisección en el intervalo [ 1.40625 , 1.421875 ]
+9 ) Bisección en el intervalo [ 1.4140625 , 1.421875 ]
+10 ) Bisección en el intervalo [ 1.4140625 , 1.41796875 ]
+11 ) Bisección en el intervalo [ 1.4140625 , 1.416015625 ]
+12 ) Bisección en el intervalo [ 1.4140625 , 1.4150390625 ]
+raiz_hallada= 1.4140625
+valor exacto= 1.4142135623730951
+
+\end{verbatim}
+\end{frame}
+
+\end{document}
+
+

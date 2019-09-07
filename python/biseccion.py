@@ -14,8 +14,13 @@
 
 
 def biseccion(f, a, b, cuenta=1, tol=1e-11):
+    
     # La variable cuenta cuenta las iteraciones
-    print(cuenta, ") Haciendo bisección en el intervalo [", a, b, "]")
+    # tol especifica la tolerancia permitida 
+    # al método numérico
+    
+    print(cuenta, ") Bisección en el intervalo", 
+                  "[", a,",", b, "]")
     if abs(b - a) < tol:
         return a
     if f(a) == 0:
@@ -24,7 +29,7 @@ def biseccion(f, a, b, cuenta=1, tol=1e-11):
         return b
     if f(a) > 0:
         if f(b) > 0:
-            raise Exception("No se cumplen las hipótesis")
+            raise Exception ("Error: hipótesis!")
         c = (a + b) / 2
         if f(c) == 0:
             return c
@@ -37,7 +42,7 @@ def biseccion(f, a, b, cuenta=1, tol=1e-11):
     else:
         # caso en que f(a)<0
         if f(b) < 0:
-            raise Exception("No se cumplen las hipótesis")
+            raise Exception ("Error: hipótesis!")
         c = (a + b) / 2
         if f(c) == 0:
             return c
@@ -45,7 +50,8 @@ def biseccion(f, a, b, cuenta=1, tol=1e-11):
             # sabemos que f(a)<0 y f(c)>0
             return biseccion(f, a, c, cuenta + 1, tol)
             # Notamos que también sabemos que f(b)<0
-            # podríamos haber usado biseccion(f,c,b) No hay unicidad!
+            # podríamos haber usado biseccion(f,c,b) 
+            # No hay unicidad!
         else:
             # sabemos que f(b)>0 y f(c) <0
             return biseccion(f, c, b, cuenta + 1, tol)
@@ -55,14 +61,14 @@ if __name__ == "__main__":
 
     from math import sqrt, exp, log, sin, cos, pi
 
-    # Ejemplo 1: calculemos la raíz cuadrada de 2 encontrando una raíz de
-    # un polinomio
+    # Ejemplo 1: calculemos la raíz cuadrada de 2 
+    # encontrando una raíz de un polinomio
 
 
     def mi_funcion(x):
         return x * x - 2
 
-    raiz_hallada = biseccion(mi_funcion, 0, 2, tol=1e-11)
+    raiz_hallada = biseccion(mi_funcion, 0, 2,tol=1e-3)
     print("raiz_hallada=", raiz_hallada)
     print("valor exacto=", sqrt(2))
 
